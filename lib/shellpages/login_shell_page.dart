@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ambassador/index.dart';
 
@@ -12,11 +13,15 @@ class LoginShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    final String assetName = 'assets/screen.png';
 
     return Stack(
       children: [
-        Container(
-          color: _applicationConfig.mainColor,
+        ConstrainedBox(
+          constraints: BoxConstraints(minHeight: height, minWidth: width),
+          child: FittedBox(fit: BoxFit.fill, child: Image.asset(assetName)),
         ),
         Positioned(
           bottom: 0,

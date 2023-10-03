@@ -19,9 +19,9 @@ class EmailPage extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is EmailLoadingState) {
-            return const Column(
+            return Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 SizedBox(
                   width: 50,
                   height: 50,
