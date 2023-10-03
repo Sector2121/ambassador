@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ambassador/index.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 void main() {
@@ -9,6 +10,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final ApplicationConfig _applicationConfig = GetIt.instance.get<ApplicationConfig>();
+
   final GoRouter _router = createRouterConfig();
 
   MyApp({super.key});
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: _router,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: _applicationConfig.mainColor),
         useMaterial3: true,
       ),
     );
