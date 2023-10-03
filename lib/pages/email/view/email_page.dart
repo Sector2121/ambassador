@@ -5,14 +5,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ambassador/index.dart';
 
-class EmailPage extends StatelessWidget {
+class EmailPage extends StatefulWidget {
+
+  EmailPage({super.key});
+
+  @override
+  State<EmailPage> createState() => _EmailPageState();
+}
+
+class _EmailPageState extends State<EmailPage> {
   final ApplicationConfig _applicationConfig = GetIt.instance.get<ApplicationConfig>();
 
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  String? emailError;
+  bool buttonDisabled = true;
 
-  EmailPage({super.key});
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +75,7 @@ class EmailPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextField(
+                        controller: _emailController,
                         decoration: InputDecoration(
                           enabledBorder: const OutlineInputBorder(
                             borderSide: BorderSide(width: 0.0, color: Colors.white),
@@ -81,6 +93,17 @@ class EmailPage extends StatelessWidget {
                             (states) => states.contains(MaterialState.focused) ? _applicationConfig.mainColor : Colors.grey,
                           ),
                         ),
+                        onChanged: (_) {
+                          if(_emailController.text.contains('@')) {
+                            setState(() {
+                              buttonDisabled = false;
+                            });
+                          } else {
+                            setState(() {
+                              buttonDisabled = true;
+                            });
+                          }
+                        },
                       ),
                     ),
                   ],
@@ -92,17 +115,17 @@ class EmailPage extends StatelessWidget {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: _applicationConfig.mainColor,
+                            color: buttonDisabled ? Colors.white : _applicationConfig.mainColor,
                             borderRadius: const BorderRadius.all(
                               Radius.circular(10),
                             ),
                           ),
                           child: TextButton(
-                            onPressed: () =>
-                                context.read<EmailBloc>().add(EmailSentEvent(email: 'foldvariadamdavid@gmail1.com')),
-                            child: const Text(
+                            onPressed: () => buttonDisabled ? null :
+                                context.read<EmailBloc>().add(EmailSentEvent(email: _emailController.text)),
+                            child: Text(
                               'Continue',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: buttonDisabled ? Colors.grey : Colors.white),
                             ),
                           ),
                         ),
