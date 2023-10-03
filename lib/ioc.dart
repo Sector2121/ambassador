@@ -11,7 +11,6 @@ void registerServices() {
 void registerBlocs() {
   final services = GetIt.instance;
 
-
   services.registerSingleton<EmailInteractor>(
     EmailInteractor(
       ambassadorApi: services.get<AmbassadorApi>(),

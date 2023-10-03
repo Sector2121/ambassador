@@ -5,7 +5,7 @@ class EmailInteractor {
 
   EmailInteractor({required this.ambassadorApi});
 
-  Future<void> checkEmailValid(String email) async {
-    await ambassadorApi.checkEmailValid(email);
+  Future<bool> checkEmailValid(String email) async {
+    return await ambassadorApi.checkEmailValid(email);
   }
 }

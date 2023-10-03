@@ -10,5 +10,8 @@ export 'pages/scoreboard//blocs/scoreboard_bloc.dart';
 export 'pages/scoreboard/domain/scoreboard_interactor.dart';
 export 'pages/scoreboard/view/scoreboard_page.dart';
 
+export 'services/navigation_service.dart';
+
 export 'application_config.dart';
 export 'ioc.dart';
+export 'routes.dart';

@@ -13,10 +13,12 @@ class EmailBloc extends Bloc<EmailEvent, EmailState> {
 
   EmailBloc({required this.emailInteractor}) : super(EmailInitial()) {
     on<EmailSentEvent>((event, emit) async {
-      emit(EmailLoadedState());
+      emit(EmailLoadingState());
       try {
-        await emailInteractor.checkEmailValid(event.email);
-        emit(EmailLoadedState());
+        final answer = await emailInteractor.checkEmailValid(event.email);
+        if(answer) {
+          emit(EmailLoadedState());
+        }
       } catch (e) {
         emit(EmailErrorState());
       }

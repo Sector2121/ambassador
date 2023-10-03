@@ -16,7 +16,11 @@ class EmailPage extends StatelessWidget {
         child: BlocProvider(
           create: (context) => GetIt.instance.get<EmailBloc>(),
           child: BlocConsumer<EmailBloc, EmailState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              if(state is EmailLoadedState) {
+                NavigationService.of(context).goToPasswordPage();
+              }
+            },
             builder: (context, state) {
               return Stack(
                 children: [
