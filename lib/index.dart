@@ -12,6 +12,9 @@ export 'pages/scoreboard/view/scoreboard_page.dart';
 
 export 'services/navigation_service.dart';
 
+export 'shellpages/app_shell_page.dart';
+export 'shellpages/login_shell_page.dart';
+
 export 'application_config.dart';
 export 'ioc.dart';
 export 'routes.dart';

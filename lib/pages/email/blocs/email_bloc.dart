@@ -11,13 +11,15 @@ part 'email_state.dart';
 class EmailBloc extends Bloc<EmailEvent, EmailState> {
   final EmailInteractor emailInteractor;
 
-  EmailBloc({required this.emailInteractor}) : super(EmailInitial()) {
+  EmailBloc({required this.emailInteractor}) : super(EmailInitialState()) {
     on<EmailSentEvent>((event, emit) async {
       emit(EmailLoadingState());
       try {
         final answer = await emailInteractor.checkEmailValid(event.email);
         if(answer) {
           emit(EmailLoadedState());
+        } else {
+          emit(EmailInitialState());
         }
       } catch (e) {
         emit(EmailErrorState());

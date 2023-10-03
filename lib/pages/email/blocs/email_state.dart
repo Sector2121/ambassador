@@ -3,7 +3,7 @@ part of 'email_bloc.dart';
 @immutable
 abstract class EmailState extends Equatable {}
 
-class EmailInitial extends EmailState {
+class EmailInitialState extends EmailState {
   @override
   List<Object?> get props => [];
 }
