@@ -11,9 +11,19 @@ part 'password_state.dart';
 class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
   final PasswordInteractor passwordInteractor;
 
-  PasswordBloc({required this.passwordInteractor}) : super(PasswordInitial()) {
-    on<PasswordEvent>((event, emit) {
-      // TODO: implement event handler
+  PasswordBloc({required this.passwordInteractor}) : super(PasswordInitialState()) {
+    on<PasswordSentEvent>((event, emit) async {
+      emit(PasswordLoadingState());
+      try {
+        final answer = await passwordInteractor.tryLogin(event.password);
+        if(answer) {
+          emit(PasswordLoadedState());
+        } else {
+          emit(PasswordInitialState());
+        }
+      } catch (e) {
+        emit(PasswordErrorState());
+      }
     });
   }
 }

@@ -1,12 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:ambassador/index.dart';
 
 class EmailPage extends StatefulWidget {
-
   EmailPage({super.key});
 
   @override
@@ -14,8 +10,6 @@ class EmailPage extends StatefulWidget {
 }
 
 class _EmailPageState extends State<EmailPage> {
-  final ApplicationConfig _applicationConfig = GetIt.instance.get<ApplicationConfig>();
-
   final _emailController = TextEditingController();
   bool buttonDisabled = true;
 
@@ -70,36 +64,12 @@ class _EmailPageState extends State<EmailPage> {
               Row(
                 children: [
                   Expanded(
-                    child: TextField(
+                    child: CustomTextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 0.0, color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: _applicationConfig.mainColor),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        labelText: 'Password',
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                        ),
-                        prefixIconColor: MaterialStateColor.resolveWith(
-                          (states) => states.contains(MaterialState.focused) ? _applicationConfig.mainColor : Colors.grey,
-                        ),
-                      ),
-                      onChanged: (_) {
-                        if(_emailController.text.contains('@')) {
-                          setState(() {
-                            buttonDisabled = false;
-                          });
-                        } else {
-                          setState(() {
-                            buttonDisabled = true;
-                          });
-                        }
-                      },
+                      textChangedCallBack: setButtonIfNecessary,
+                      obscure: false,
+                      icon: const Icon(Icons.email_outlined),
+                      labelTetx: 'E-mail address',
                     ),
                   ),
                 ],
@@ -109,21 +79,9 @@ class _EmailPageState extends State<EmailPage> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: buttonDisabled ? Colors.white : _applicationConfig.mainColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        child: TextButton(
-                          onPressed: () => buttonDisabled ? null :
-                              context.read<EmailBloc>().add(EmailSentEvent(email: _emailController.text)),
-                          child: Text(
-                            'Continue',
-                            style: TextStyle(color: buttonDisabled ? Colors.grey : Colors.white),
-                          ),
-                        ),
+                      child: CustomButton(
+                        buttonDisabled: buttonDisabled,
+                        callback: () => context.read<EmailBloc>().add(EmailSentEvent(email: _emailController.text)),
                       ),
                     ),
                   ],
@@ -134,5 +92,17 @@ class _EmailPageState extends State<EmailPage> {
         );
       },
     );
+  }
+
+  void setButtonIfNecessary() {
+    if (_emailController.text.contains('@')) {
+      setState(() {
+        buttonDisabled = false;
+      });
+    } else {
+      setState(() {
+        buttonDisabled = true;
+      });
+    }
   }
 }

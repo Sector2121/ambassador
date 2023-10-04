@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         routerConfig: _router,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: _applicationConfig.mainColor),
-          useMaterial3: true,
+        theme: ThemeData().copyWith(
+          scaffoldBackgroundColor: Colors.white,
+          colorScheme: ThemeData().colorScheme.copyWith(primary: _applicationConfig.mainColor),
         ),
       ),
     );

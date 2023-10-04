@@ -5,7 +5,7 @@ class PasswordInteractor {
 
   PasswordInteractor({required this.ambassadorApi});
 
-  Future<bool> checkEmailValid(String email) async {
-    return await ambassadorApi.checkEmailValid(email);
+  Future<bool> tryLogin(String password) async {
+    return await ambassadorApi.tryLogin(password);
   }
 }

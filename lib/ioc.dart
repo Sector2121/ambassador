@@ -5,6 +5,7 @@ void registerServices() {
   final services = GetIt.instance;
 
   services.registerSingleton<ApplicationConfig>(ApplicationConfig());
+  services.registerSingleton<ProfileInfo>(ProfileInfo());
   services.registerSingleton<AmbassadorApi>(AmbassadorApi());
 }
 
