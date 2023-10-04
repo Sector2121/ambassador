@@ -15,9 +15,9 @@ class ScoreboardBloc extends Bloc<ScoreboardEvent, ScoreboardState> {
     on<GetScoreboardEvent>((event, emit) async {
       emit(ScoreboardLoadingState());
       try {
-        final answer = await scoreboardInteractor.getScoreboard();
-        if (answer) {
-          emit(ScoreboardLoadedState());
+        final scores = await scoreboardInteractor.getScoreboard();
+        if (scores.isNotEmpty) {
+          emit(ScoreboardLoadedState(scores));
         } else {
           emit(ScoreboardInitialState());
         }

@@ -1,6 +1,7 @@
 export 'dio/ambassador_api.dart';
 
 export 'model/profile_info.dart';
+export 'model/score.dart';
 
 export 'pages/email/blocs/email_bloc.dart';
 export 'pages/email/domain/email_interactor.dart';
@@ -16,6 +17,7 @@ export 'services/navigation_service.dart';
 
 export 'shellpages/app_shell_page.dart';
 export 'shellpages/login_shell_page.dart';
+export 'shellpages/scoreboard_shell_page.dart';
 
 export 'widgets/custom_button.dart';
 export 'widgets/custom_textfield.dart';

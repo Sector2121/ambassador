@@ -5,10 +5,11 @@ import 'package:ambassador/index.dart';
 GoRouter? _router;
 final _appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'AppShellRouteNavigatorKey');
 final _loginShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'LoginShellRouteNavigatorKey');
+final _scoreboardShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'ScoreboardShellNavigatorKey');
 
 GoRouter createRouterConfig() {
   _router ??= GoRouter(
-    initialLocation: '/${NavigationRoutes.email}',
+    initialLocation: '/${NavigationRoutes.scoreboard}',
     routes: [
       ShellRoute(
         navigatorKey: _appShellNavigatorKey,
@@ -19,8 +20,8 @@ GoRouter createRouterConfig() {
           ShellRoute(
             navigatorKey: _loginShellNavigatorKey,
             builder: (context, state, widget) => LoginShellPage(
-                child: widget,
-              ),
+              child: widget,
+            ),
             routes: [
               GoRoute(
                 name: NavigationRoutes.email,
@@ -50,11 +51,17 @@ GoRouter createRouterConfig() {
               ),
             ],
           ),
-          GoRoute(
-            name: NavigationRoutes.scoreboard,
-            path: '/${NavigationRoutes.scoreboard}',
-            builder: (context, state) => ScoreBoardPage(),
-          ),
+          ShellRoute(
+            navigatorKey: _scoreboardShellNavigatorKey,
+            builder: (context, state, widget) => ScoreBoardShellPage(body: widget),
+            routes: [
+              GoRoute(
+                name: NavigationRoutes.scoreboard,
+                path: '/${NavigationRoutes.scoreboard}',
+                builder: (context, state) => ScoreBoardPage(),
+              ),
+            ],
+          )
         ],
       ),
     ],

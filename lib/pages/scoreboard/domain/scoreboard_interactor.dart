@@ -5,7 +5,16 @@ class ScoreboardInteractor {
 
   ScoreboardInteractor({required this.ambassadorApi});
 
-  Future<bool> getScoreboard() async {
-    return await ambassadorApi.getScoreboard();
+  Future<List<Score>> getScoreboard() async {
+    List<Score> scores = [];
+    final scoreboard = await ambassadorApi.getScoreboard();
+
+    for (var element in scoreboard) {
+      scores.add(Score(name: element['name'], userCount: element['user_count']));
+    }
+
+    scores.sort((a, b) => b.userCount.compareTo(a.userCount));
+
+    return scores;
   }
 }

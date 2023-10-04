@@ -14,8 +14,12 @@ class ScoreboardLoadingState extends ScoreboardState {
 }
 
 class ScoreboardLoadedState extends ScoreboardState {
+  final List<Score> scores;
+
+  ScoreboardLoadedState(this.scores);
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [scores];
 }
 
 class ScoreboardErrorState extends ScoreboardState {
