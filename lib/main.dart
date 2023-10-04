@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ambassador/index.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,11 +19,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: _applicationConfig.mainColor),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+        create: (context) => GetIt.instance.get<EmailBloc>(),
+        ),
+      ],
+      child: MaterialApp.router(
+        routerConfig: _router,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: _applicationConfig.mainColor),
+          useMaterial3: true,
+        ),
       ),
     );
   }
