@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-        create: (context) => GetIt.instance.get<EmailBloc>(),
+          create: (context) => GetIt.instance.get<EmailBloc>(),
         ),
       ],
       child: MaterialApp.router(

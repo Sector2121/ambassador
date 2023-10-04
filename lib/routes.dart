@@ -53,7 +53,7 @@ GoRouter createRouterConfig() {
           GoRoute(
             name: NavigationRoutes.scoreboard,
             path: '/${NavigationRoutes.scoreboard}',
-            builder: (context, state) => EmailPage(),
+            builder: (context, state) => ScoreBoardPage(),
           ),
         ],
       ),

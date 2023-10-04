@@ -6,6 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'password_event.dart';
+
 part 'password_state.dart';
 
 class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
@@ -16,7 +17,7 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
       emit(PasswordLoadingState());
       try {
         final answer = await passwordInteractor.tryLogin(event.password);
-        if(answer) {
+        if (answer) {
           emit(PasswordLoadedState());
         } else {
           emit(PasswordInitialState());

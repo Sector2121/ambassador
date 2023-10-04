@@ -19,8 +19,26 @@ class _PasswordPageState extends State<PasswordPage> {
     return BlocProvider(
       create: (context) => GetIt.instance.get<PasswordBloc>(),
       child: BlocConsumer<PasswordBloc, PasswordState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is PasswordLoadedState) {
+            NavigationService.of(context).goToScoreboardPage();
+          }
+        },
         builder: (context, state) {
+          if (state is PasswordLoadingState) {
+            return const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator(),
+                ),
+              ],
+            );
+          } else if (state is PasswordLoadedState) {
+            return Container();
+          }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

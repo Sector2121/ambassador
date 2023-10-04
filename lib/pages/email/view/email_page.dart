@@ -50,6 +50,7 @@ class _EmailPageState extends State<EmailPage> {
                 'Sign in or create an account',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
               ),
+              const SizedBox(height: 10),
               Text(
                 'if you already have a diverzum account you can easily sign in, if not we will create one for you in no time!',
                 style: TextStyle(
