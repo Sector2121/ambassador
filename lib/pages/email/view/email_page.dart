@@ -27,11 +27,6 @@ class _EmailPageState extends State<EmailPage> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double bottom = MediaQuery.of(context).viewInsets.bottom;
-    /*if(MediaQuery.of(context).viewInsets.bottom == 0) {
-      NavigationService.of(context).goToEmailPage();
-    }*/
     return BlocProvider(
       create: (context) => GetIt.instance.get<EmailBloc>(),
       child: BlocConsumer<EmailBloc, EmailState>(

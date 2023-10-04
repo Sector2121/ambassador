@@ -14,3 +14,10 @@ class EmailSentEvent extends EmailEvent {
   @override
   List<Object?> get props => [email];
 }
+
+class Reset extends EmailEvent {
+  @override
+
+  List<Object?> get props => [];
+
+}

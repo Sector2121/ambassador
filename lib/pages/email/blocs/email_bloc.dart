@@ -25,5 +25,8 @@ class EmailBloc extends Bloc<EmailEvent, EmailState> {
         emit(EmailErrorState());
       }
     });
+    on<Reset>((event, emit) async {
+      emit(EmailLoadingState());
+    });
   }
 }

@@ -14,6 +14,8 @@ class NavigationService {
 
   static NavigationService of(BuildContext context) => NavigationService(context);
 
+  void goBack<T extends Object?>([T? result]) => GoRouter.of(context).pop(result);
+
   void goToEmailPage() {
     _goToPageImpl(
       context: context,
@@ -26,7 +28,6 @@ class NavigationService {
     _goToPageImpl(
       context: context,
       routeName: NavigationRoutes.password,
-      withoutStacking: true,
     );
   }
 

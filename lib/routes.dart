@@ -18,12 +18,9 @@ GoRouter createRouterConfig() {
         routes: [
           ShellRoute(
             navigatorKey: _loginShellNavigatorKey,
-            builder: (context, state, widget) {
-              final height = state.extra == null ? MediaQuery.of(context).size.height : state.extra as double;
-              return LoginShellPage(
+            builder: (context, state, widget) => LoginShellPage(
                 child: widget,
-              );
-            },
+              ),
             routes: [
               GoRoute(
                 name: NavigationRoutes.email,
