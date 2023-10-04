@@ -1,25 +1,19 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get_it/get_it.dart';
-import 'package:ambassador/index.dart';
 
 class LoginShellPage extends StatelessWidget {
   final Widget child;
 
   LoginShellPage({super.key, required this.child});
 
-  final ApplicationConfig _applicationConfig = GetIt.instance.get<ApplicationConfig>();
-
   @override
   Widget build(BuildContext context) {
-    final asd = MediaQuery.of(context);
-
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
-    final String assetName = 'assets/screen.png';
+    const String assetName = 'assets/screen.png';
 
-    print('hello');
+    final loginPageHeight = MediaQuery.of(context).viewInsets.bottom == 0 ? height * 0.6 : height * 0.4;
 
     return Stack(
       children: [
@@ -38,12 +32,19 @@ class LoginShellPage extends StatelessWidget {
                 topRight: Radius.circular(40),
               ),
             ),
-            child: SizedBox(
-              height: height * 0.65,
-              child: Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: child,
-              ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: loginPageHeight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: child,
+                  ),
+                ),
+                SizedBox(
+                  height: max(MediaQuery.of(context).viewInsets.bottom, 0),
+                ),
+              ],
             ),
           ),
         )
