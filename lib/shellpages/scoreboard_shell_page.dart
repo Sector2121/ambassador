@@ -15,9 +15,7 @@ class ScoreBoardShellPage extends StatelessWidget {
           children: [
             SizedBox(
               width: width * 0.4,
-              child: Expanded(
-                child: Image.asset('assets/diverzumpng.png'),
-              ),
+              child: Image.asset('assets/diverzumpng.png'),
             ),
           ],
         ),
