@@ -5,7 +5,7 @@ class PasswordInteractor {
 
   PasswordInteractor({required this.ambassadorApi});
 
-  Future<bool> tryLogin(String password) async {
+  Future<BackendAnswer> tryLogin(String password) async {
     return await ambassadorApi.tryLogin(password);
   }
 }

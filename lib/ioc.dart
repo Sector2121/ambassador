@@ -6,6 +6,7 @@ void registerServices() {
 
   services.registerSingleton<ApplicationConfig>(ApplicationConfig());
   services.registerSingleton<ProfileInfo>(ProfileInfo());
+  services.registerSingleton<MessageService>(MessageService());
   services.registerSingleton<AmbassadorApi>(AmbassadorApi());
 }
 

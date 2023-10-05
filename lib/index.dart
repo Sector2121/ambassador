@@ -1,5 +1,6 @@
 export 'dio/ambassador_api.dart';
 
+export 'model/backend_answer.dart';
 export 'model/profile_info.dart';
 export 'model/score.dart';
 
@@ -14,6 +15,7 @@ export 'pages/password/domain/password_interactor.dart';
 export 'pages/password/view/password_page.dart';
 
 export 'services/navigation_service.dart';
+export 'services/message_service.dart';
 
 export 'shellpages/app_shell_page.dart';
 export 'shellpages/login_shell_page.dart';

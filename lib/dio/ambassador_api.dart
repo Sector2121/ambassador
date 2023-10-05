@@ -23,7 +23,7 @@ class AmbassadorApi {
     }
   }
 
-  Future<bool> tryLogin(String password) async {
+  Future<BackendAnswer> tryLogin(String password) async {
     try {
       Response response = await _dio.post(
         '${_baseUrl}auth/login',
@@ -35,9 +35,12 @@ class AmbassadorApi {
 
       _profileInfo.accessToken = response.data['access_token'];
 
-      return true;
+      return BackendAnswer(null, statusOk: true);
+    } on DioException catch (e) {
+      final errorMessage = e.response?.data['errors']['password'][0];
+      return BackendAnswer(errorMessage, statusOk: false);
     } catch (e) {
-      return false;
+      return BackendAnswer(null, statusOk: false);
     }
   }
 

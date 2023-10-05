@@ -11,6 +11,8 @@ class PasswordPage extends StatefulWidget {
 }
 
 class _PasswordPageState extends State<PasswordPage> {
+  final MessageService _messageService = GetIt.instance.get<MessageService>();
+
   final _passwordController = TextEditingController();
   bool buttonDisabled = true;
 
@@ -19,9 +21,11 @@ class _PasswordPageState extends State<PasswordPage> {
     return BlocProvider(
       create: (context) => GetIt.instance.get<PasswordBloc>(),
       child: BlocConsumer<PasswordBloc, PasswordState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is PasswordLoadedState) {
             NavigationService.of(context).goToLeaderboardPage();
+          } else if (state is PasswordWrongState) {
+            await _messageService.showMessage(context, 'Wrong Password', state.message);
           }
         },
         builder: (context, state) {

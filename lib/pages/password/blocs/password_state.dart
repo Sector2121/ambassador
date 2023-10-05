@@ -18,6 +18,15 @@ class PasswordLoadedState extends PasswordState {
   List<Object?> get props => [];
 }
 
+class PasswordWrongState extends PasswordState {
+  final String message;
+
+  PasswordWrongState(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
 class PasswordErrorState extends PasswordState {
   @override
   List<Object?> get props => [];

@@ -14,9 +14,12 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
       emit(PasswordLoadingState());
       try {
         final answer = await passwordInteractor.tryLogin(event.password);
-        if (answer) {
+        if (answer.statusOk) {
           emit(PasswordLoadedState());
         } else {
+          if(answer.message != null) {
+            emit(PasswordWrongState(answer.message!));
+          }
           emit(PasswordInitialState());
         }
       } catch (e) {
