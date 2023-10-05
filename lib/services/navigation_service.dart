@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 class NavigationRoutes {
   static const email = 'email';
   static const password = 'password';
-  static const scoreboard = 'scoreboard';
+  static const leaderboard = 'leaderboard';
 }
 
 class NavigationService {
@@ -31,10 +31,10 @@ class NavigationService {
     );
   }
 
-  void goToScoreboardPage() {
+  void goToLeaderboardPage() {
     _goToPageImpl(
       context: context,
-      routeName: NavigationRoutes.scoreboard,
+      routeName: NavigationRoutes.leaderboard,
       withoutStacking: true,
     );
   }

@@ -21,7 +21,7 @@ class _PasswordPageState extends State<PasswordPage> {
       child: BlocConsumer<PasswordBloc, PasswordState>(
         listener: (context, state) {
           if (state is PasswordLoadedState) {
-            NavigationService.of(context).goToScoreboardPage();
+            NavigationService.of(context).goToLeaderboardPage();
           }
         },
         builder: (context, state) {

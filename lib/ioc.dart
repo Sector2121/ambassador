@@ -24,6 +24,18 @@ void registerBlocs() {
     ),
   );
 
+  services.registerSingleton<LeaderboardInteractor>(
+    LeaderboardInteractor(
+      ambassadorApi: services.get<AmbassadorApi>(),
+    ),
+  );
+
+  services.registerFactory<LeaderboardBloc>(
+    () => LeaderboardBloc(
+      leaderboardInteractor: services.get<LeaderboardInteractor>(),
+    ),
+  );
+
   services.registerSingleton<PasswordInteractor>(
     PasswordInteractor(
       ambassadorApi: services.get<AmbassadorApi>(),
@@ -44,7 +56,7 @@ void registerBlocs() {
 
   services.registerFactory<ScoreboardBloc>(
     () => ScoreboardBloc(
-      scoreboardInteractor: services.get<ScoreboardInteractor>(),
+      scoreboardInteractor: services.get<LeaderboardInteractor>(),
     ),
   );
 }

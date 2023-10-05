@@ -9,7 +9,7 @@ part 'scoreboard_event.dart';
 part 'scoreboard_state.dart';
 
 class ScoreboardBloc extends Bloc<ScoreboardEvent, ScoreboardState> {
-  final ScoreboardInteractor scoreboardInteractor;
+  final LeaderboardInteractor scoreboardInteractor;
 
   ScoreboardBloc({required this.scoreboardInteractor}) : super(ScoreboardInitialState()) {
     on<GetScoreboardEvent>((event, emit) async {

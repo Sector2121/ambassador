@@ -9,7 +9,7 @@ final _scoreboardShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Scor
 
 GoRouter createRouterConfig() {
   _router ??= GoRouter(
-    initialLocation: '/${NavigationRoutes.scoreboard}',
+    initialLocation: '/${NavigationRoutes.leaderboard}',
     routes: [
       ShellRoute(
         navigatorKey: _appShellNavigatorKey,
@@ -56,9 +56,9 @@ GoRouter createRouterConfig() {
             builder: (context, state, widget) => ScoreBoardShellPage(body: widget),
             routes: [
               GoRoute(
-                name: NavigationRoutes.scoreboard,
-                path: '/${NavigationRoutes.scoreboard}',
-                builder: (context, state) => ScoreBoardPage(),
+                name: NavigationRoutes.leaderboard,
+                path: '/${NavigationRoutes.leaderboard}',
+                builder: (context, state) => LeaderboardPage(),
               ),
             ],
           )

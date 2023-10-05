@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-class ScoreBoardPage extends StatelessWidget {
+class LeaderboardPage extends StatelessWidget {
   final ApplicationConfig _applicationConfig = GetIt.instance.get<ApplicationConfig>();
 
-  ScoreBoardPage({super.key});
+  LeaderboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
