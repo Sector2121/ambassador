@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 class LeaderboardPage extends StatefulWidget {
-  LeaderboardPage({super.key});
+  const LeaderboardPage({super.key});
 
   @override
   State<LeaderboardPage> createState() => _LeaderboardPageState();
@@ -49,7 +49,6 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
               onRefresh: () async {
                 context.read<LeaderboardBloc>().add(GetLeaderboardEvent());
               },
-              onLoading: () async {await Future.delayed(Duration(seconds: 3));},
               child: ListView.builder(
                 primary: false,
                 shrinkWrap: true,

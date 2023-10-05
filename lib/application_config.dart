@@ -26,7 +26,7 @@ class AppIcon extends StatelessWidget {
   final double? width;
   final AppImage? appImage;
 
-  AppIcon({
+  const AppIcon({
     Key? key,
     this.appImage,
     this.iconColor,

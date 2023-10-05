@@ -1,12 +1,9 @@
-import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:ambassador/index.dart';
-
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'password_event.dart';
-
 part 'password_state.dart';
 
 class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {

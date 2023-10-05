@@ -10,7 +10,7 @@ class CustomTextField extends StatefulWidget {
   final Icon? icon;
   final bool? suffixIconVisible;
 
-  CustomTextField({
+  const CustomTextField({
     super.key,
     required this.controller,
     required this.textChangedCallBack,

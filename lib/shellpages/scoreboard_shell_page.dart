@@ -9,7 +9,7 @@ class ScoreBoardShellPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.add),
+        leading: const Icon(Icons.add),
       ),
       body: body,
     );

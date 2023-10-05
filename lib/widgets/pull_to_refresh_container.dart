@@ -8,7 +8,6 @@ class PullToRefreshContainer extends StatelessWidget {
 
   final Widget child;
   final Future<void> Function() onRefresh;
-  final Future<void> Function() onLoading;
   final RefreshController refreshController;
   final ScrollController scrollController;
 
@@ -16,15 +15,12 @@ class PullToRefreshContainer extends StatelessWidget {
     Key? key,
     required this.child,
     required this.onRefresh,
-    required this.onLoading,
     required this.refreshController,
     required this.scrollController,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return SmartRefresher(
       controller: refreshController,
       scrollController: scrollController,
@@ -37,14 +33,6 @@ class PullToRefreshContainer extends StatelessWidget {
           refreshController.refreshCompleted();
         } catch (_) {
           refreshController.refreshFailed();
-        }
-      },
-      onLoading: () async {
-        try {
-          await onLoading();
-          refreshController.loadComplete();
-        } catch (_) {
-          refreshController.loadFailed();
         }
       },
       child: child,

@@ -26,7 +26,7 @@ GoRouter createRouterConfig() {
               GoRoute(
                 name: NavigationRoutes.email,
                 path: '/${NavigationRoutes.email}',
-                builder: (context, state) => EmailPage(),
+                builder: (context, state) => const EmailPage(),
               ),
               GoRoute(
                 name: NavigationRoutes.password,
@@ -58,7 +58,7 @@ GoRouter createRouterConfig() {
               GoRoute(
                 name: NavigationRoutes.leaderboard,
                 path: '/${NavigationRoutes.leaderboard}',
-                builder: (context, state) => LeaderboardPage(),
+                builder: (context, state) => const LeaderboardPage(),
               ),
             ],
           )

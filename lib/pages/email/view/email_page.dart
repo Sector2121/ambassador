@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ambassador/index.dart';
 
 class EmailPage extends StatefulWidget {
-  EmailPage({super.key});
+  const EmailPage({super.key});
 
   @override
   State<EmailPage> createState() => _EmailPageState();

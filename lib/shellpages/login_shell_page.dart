@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class LoginShellPage extends StatelessWidget {
   final Widget child;
 
-  LoginShellPage({super.key, required this.child});
+  const LoginShellPage({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
