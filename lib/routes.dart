@@ -9,7 +9,7 @@ final _scoreboardShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Scor
 
 GoRouter createRouterConfig() {
   _router ??= GoRouter(
-    initialLocation: '/${NavigationRoutes.leaderboard}',
+    initialLocation: '/${NavigationRoutes.email}',
     routes: [
       ShellRoute(
         navigatorKey: _appShellNavigatorKey,

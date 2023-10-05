@@ -67,7 +67,13 @@ class _PasswordPageState extends State<PasswordPage> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 10,
+              ),
               const Text('You have an account. Please complete the fields below'),
+              const SizedBox(
+                height: 20,
+              ),
               CustomTextField(
                 controller: _passwordController,
                 textChangedCallBack: setButtonIfNecessary,
@@ -75,6 +81,9 @@ class _PasswordPageState extends State<PasswordPage> {
                 icon: const Icon(Icons.key),
                 suffixIconVisible: true,
                 labelTetx: 'Password',
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Row(
                 children: [
