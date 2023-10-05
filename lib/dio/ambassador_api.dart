@@ -42,12 +42,10 @@ class AmbassadorApi {
   }
 
   Future<List<dynamic>> getScoreboard() async {
-    final String asd = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLmRpdmVyenVtLmh1XC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjk2NDQ1NTkwLCJuYmYiOjE2OTY0NDU1OTAsImp0aSI6InZBN0NvUDNOcUdPZUtWYlAiLCJzdWIiOjE2OTM0MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.0sshaYLW1MWHNX_4SSUFpREmov9IDQ9HJDjht3qtcRY';
     try {
       Response response = await _dio.get(
         '${_baseUrl}auth/ambassador',
-        //options: Options(headers: {'Authorization': 'Bearer ${_profileInfo.accessToken}'}),
-        options: Options(headers: {'Authorization': 'Bearer ${asd}'}),
+        options: Options(headers: {'Authorization': 'Bearer ${_profileInfo.accessToken}'}),
       );
 
       return response.data['leaderboard'] as List<dynamic>;
