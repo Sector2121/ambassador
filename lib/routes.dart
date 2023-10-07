@@ -53,7 +53,16 @@ GoRouter createRouterConfig() {
           ),
           ShellRoute(
             navigatorKey: _scoreboardShellNavigatorKey,
-            builder: (context, state, widget) => ScoreBoardShellPage(body: widget),
+            pageBuilder: (context, state, widget) {
+              return CustomTransitionPage(
+                key: state.pageKey,
+                child: ScoreBoardShellPage(body: widget),
+                transitionDuration: const Duration(milliseconds: 500),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+              );
+            },
             routes: [
               GoRoute(
                 name: NavigationRoutes.leaderboard,
