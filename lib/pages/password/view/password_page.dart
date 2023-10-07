@@ -25,7 +25,7 @@ class _PasswordPageState extends State<PasswordPage> {
           if (state is PasswordLoadedState) {
             NavigationService.of(context).goToLeaderboardPage();
           } else if (state is PasswordWrongState) {
-            await _messageService.showMessage(context, 'Wrong Password', state.message);
+            _messageService.showMessage(context, 'Wrong Password', state.message);
           }
         },
         builder: (context, state) {
